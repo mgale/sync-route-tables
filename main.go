@@ -34,7 +34,13 @@ networks are available via docker network ls. This means we can't query docker f
 network information immediately when the routes are being added.
 */
 
-var version string = "0.0.1"
+var (
+	version = "dev"
+	commit  = "none"
+	date    = "unknown"
+	builtBy = "unknown"
+)
+
 var managedRouteTable int
 var allBridges bool
 
@@ -235,7 +241,7 @@ func main() {
 		os.Exit(1)
 	}
 	if opt.Called("version") {
-		fmt.Println(version)
+		fmt.Printf("dap version %s, commit %s, built at %s by %s\n", version, commit, date, builtBy)
 		os.Exit(1)
 	}
 	if err != nil {
